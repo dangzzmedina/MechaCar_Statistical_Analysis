@@ -1,0 +1,23 @@
+// Deliverable 1
+mpg <- read.csv('MechaCar_mpg.csv', stringsAsFactors = F)
+lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD, mpg)
+summary(lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD, mpg))
+
+//Deliverable 2
+suspension_coils <- read.csv('Suspension_Coil.csv', stringsAsFactors = F)
+total_summary <- suspesion_coils %>% summarize(MEAN= mean(PSI), MEDIAN= median(PSI),VARIANCE=var(PSI), SD=sd(PSI))
+lot_summary <- suspesion_coils %>% group_by(Manufacturing_Lot) %>% summarize(MEAN= mean(PSI), MEDIAN= median(PSI),VARIANCE=var(PSI), SD=sd(PSI))
+
+//Deliverable 3 part A
+suspension_coils <- read.csv('Suspension_Coil.csv', stringsAsFactors = F)
+total_summary <- suspension_coils %>% summarize(MEAN= mean(PSI), MEDIAN= median(PSI),VARIANCE=var(PSI), SD=sd(PSI))
+lot_summary <- suspension_coils %>% group_by(Manufacturing_Lot) %>% summarize(MEAN= mean(PSI), MEDIAN= median(PSI),VARIANCE=var(PSI), SD=sd(PSI))
+
+//Deliverable 3 part B
+t.test(x=suspension_coils$PSI, mu=1500)
+population1 <- subset(suspension_coils, Manufacturing_Lot=='Lot1')
+t.test(x=population1$PSI, mu=1500)
+population2 <- subset(suspension_coils, Manufacturing_Lot=='Lot2')
+t.test(x=population2$PSI, mu=1500)
+population3 <- subset(suspension_coils, Manufacturing_Lot=='Lot3')
+t.test(x=population3$PSI, mu=1500)
